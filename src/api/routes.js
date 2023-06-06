@@ -1,4 +1,5 @@
-export const BASE_URL = "https://rxje2xzpme.us-east-1.awsapprunner.com/api/v1";
+export const BASE_URL =
+  "http://ec2-54-175-171-59.compute-1.amazonaws.com/api/v1";
 
 export default {
   // -----AUTH------//

@@ -7,6 +7,7 @@ import {
   redTrash,
   serviceIcon,
   serviceOrder,
+  subScription,
   userIcon,
 } from "../assets";
 import "./layout.css";
@@ -27,6 +28,7 @@ import routes from "../api/routes";
 import { useState } from "react";
 import Loader from "../components/loader/loader";
 import { GreenNotify, RedNotify } from "../helper/helper";
+import SubScription from "../pages/subScription/subScription";
 
 const { Header, Content, Footer, Sider } = Layout;
 const LayoutDashboard = () => {
@@ -85,23 +87,6 @@ const LayoutDashboard = () => {
         >
           <Menu.Item
             style={{ marginBottom: "2rem" }}
-            onClick={() => navigate("/products")}
-            icon={<img className="side-bar-icon" src={productIcon} />}
-            key="90"
-          >
-            Products
-          </Menu.Item>
-          <Menu.Item
-            style={{ marginBottom: "2rem" }}
-            onClick={() => navigate("/services")}
-            icon={<img className="side-bar-icon" src={serviceIcon} />}
-            key="92"
-          >
-            Services
-          </Menu.Item>
-
-          <Menu.Item
-            style={{ marginBottom: "2rem" }}
             onClick={() => navigate("/user-list")}
             icon={<img className="side-bar-icon" src={userIcon} />}
             key="95"
@@ -110,20 +95,13 @@ const LayoutDashboard = () => {
           </Menu.Item>
           <Menu.Item
             style={{ marginBottom: "2rem" }}
-            onClick={() => navigate("/products-order-list")}
-            icon={<img className="side-bar-icon" src={productOrder} />}
-            key="99"
+            onClick={() => navigate("/subscription")}
+            icon={<img className="side-bar-icon" src={subScription} />}
+            key="96"
           >
-            Product Orders
+            Subscription
           </Menu.Item>
-          <Menu.Item
-            style={{ marginBottom: "2rem" }}
-            onClick={() => navigate("/services-order-list")}
-            icon={<img className="side-bar-icon" src={serviceOrder} />}
-            key="105"
-          >
-            Service Orders
-          </Menu.Item>
+
           <Menu.Item onClick={logOut} key="89">
             Log Out
           </Menu.Item>
@@ -137,20 +115,21 @@ const LayoutDashboard = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<Products />}></Route>
-            <Route path="/products" element={<Products />}></Route>
+            <Route path="/" element={<UserList />}></Route>
+            {/* <Route path="/products" element={<Products />}></Route>
             <Route path="/services" element={<Services />}></Route>
             <Route path="/new-service" element={<AddNewService />}></Route>
-            <Route path="/update-service" element={<UpdateService />}></Route>
+            <Route path="/update-service" element={<UpdateService />}></Route> */}
             <Route path="/user-list" element={<UserList />}></Route>
-            <Route
+            <Route path="//subscription" element={<SubScription />}></Route>
+            {/* <Route
               path="/products-order-list"
               element={<ProductOrder />}
             ></Route>
             <Route
               path="/services-order-list"
               element={<ServiceOrder />}
-            ></Route>
+            ></Route> */}
           </Routes>
         </Content>
       </Layout>

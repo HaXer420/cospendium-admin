@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./userList.css";
 import { Breadcrumb, Button, Select, Table, Image } from "antd";
 import { crossIcon, homeIcon, redTrash, trueIcon } from "../../assets";
 import { callApi } from "../../api/apiCaller";
@@ -7,17 +6,18 @@ import routes from "../../api/routes";
 import Loader from "../../components/loader/loader";
 import moment from "moment/moment";
 
-const UserList = () => {
+const SubScription = () => {
   const [users, setUsers] = useState([]);
   const [isloading, setIsLoading] = useState(false);
+
   const getAllUser = () => {
     let getRes = (res) => {
-      console.log("res of user ", res);
+      //console.log("res of user ", res);
       setUsers(res?.data?.data);
     };
 
     callApi("GET", routes.getAllUser, null, setIsLoading, getRes, (error) => {
-      console.log("error", error);
+      //console.log("error", error);
     });
   };
 
@@ -52,10 +52,22 @@ const UserList = () => {
       className: "action-column-header",
     },
     {
-      title: "Verified",
-      dataIndex: "verified",
+      title: "Subscription",
+      dataIndex: "subscription",
       align: "center",
       className: "action-column-header",
+      filters: [
+        {
+          text: "Basic",
+          value: "Basic",
+        },
+        {
+          text: "Premium",
+          value: "Premium",
+        },
+      ],
+      onFilter: (value, record) =>
+        record.subscription.props.children.props.children.includes(value),
     },
   ];
 
@@ -71,9 +83,9 @@ const UserList = () => {
           <Image width={50} src={item?.image} alt="profile-image" />
         </div>
       ),
-      verified: (
+      subscription: (
         <div className="server-roles-trash-btn">
-          <img src={item?.verified ? trueIcon : crossIcon} alt="" />
+          <h1>{item?.isPremium ? "Premium" : "Basic"}</h1>
         </div>
       ),
     };
@@ -85,6 +97,7 @@ const UserList = () => {
     }
     return "server-role-odd-row";
   };
+
   return (
     <div className="admin-products-main-container">
       <Loader loading={isloading} />
@@ -111,4 +124,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default SubScription;
