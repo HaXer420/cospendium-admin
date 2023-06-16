@@ -108,7 +108,10 @@ export const callApi = async (
           );
         })
         .catch((err) => console.log("error refresh token=> ", err));
-    } else if (responseJson?.status < 600) {
+    } else if (
+      responseJson?.status < 600 ||
+      responseJson?.status == "Success"
+    ) {
       onSuccess(responseJson);
       //   if (responseJson?.errorType) {
       //     GreenSnackbar(responseJson?.errorType);

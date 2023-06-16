@@ -12,22 +12,8 @@ export default {
   verifyOTPresetPassword: BASE_URL + "/user/verifyOTPResetPassword",
   logOut: BASE_URL + "/user/logout",
   updateUser: BASE_URL + "/user",
-
-  // -----------Products--------------//
-
-  getProducts: BASE_URL + "/product/getAll?limit=1000",
-  upDateProduct: BASE_URL + "/product/update",
-  createProduct: BASE_URL + "/product/create",
-  deleteProduct: BASE_URL + "/product/delete",
-  allBookedProduct: BASE_URL + "/booking/allbookedproducts",
-  // -------------Services-------------//
-
-  getAllServices: BASE_URL + "/service/getall",
-  createService: BASE_URL + "/service/create",
-  deleteService: BASE_URL + "/service/delete",
-  updateService: BASE_URL + "/service/update",
-  allBookedServices: BASE_URL + "/booking/allbookedservices",
-
-  // -------------Services-------------//
+  // ----------User--------
   getAllUser: BASE_URL + "/user",
+  getStats: BASE_URL + "/user/stats",
+  getAllData: BASE_URL + "/user/alluserstats",
 };

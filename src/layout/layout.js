@@ -2,8 +2,11 @@ import React from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import {
   homeIcon,
+  logOutIcon,
   productIcon,
   productOrder,
+  projectIcon1,
+  projectsIcon,
   redTrash,
   serviceIcon,
   serviceOrder,
@@ -29,6 +32,8 @@ import { useState } from "react";
 import Loader from "../components/loader/loader";
 import { GreenNotify, RedNotify } from "../helper/helper";
 import SubScription from "../pages/subScription/subScription";
+import Dashboard from "../pages/dashboard/dashboard";
+import UserProjects from "../pages/userProjects/userProjects";
 
 const { Header, Content, Footer, Sider } = Layout;
 const LayoutDashboard = () => {
@@ -73,9 +78,11 @@ const LayoutDashboard = () => {
             textAlign: "center",
             color: "white",
             fontSize: "3rem",
+            cursor: "pointer",
           }}
+          onClick={() => navigate("/")}
         >
-          Logo
+          Cospendium
         </div>
         <Menu
           style={{ marginTop: "5rem" }}
@@ -101,8 +108,21 @@ const LayoutDashboard = () => {
           >
             Subscription
           </Menu.Item>
+          <Menu.Item
+            style={{ marginBottom: "2rem" }}
+            onClick={() => navigate("/userProject")}
+            icon={<img className="side-bar-icon" src={projectIcon1} />}
+            key="90"
+          >
+            Projects
+          </Menu.Item>
 
-          <Menu.Item onClick={logOut} key="89">
+          <Menu.Item
+            style={{ marginTop: "5rem" }}
+            icon={<img className="side-bar-icon" src={logOutIcon} />}
+            onClick={logOut}
+            key="89"
+          >
             Log Out
           </Menu.Item>
         </Menu>
@@ -115,13 +135,14 @@ const LayoutDashboard = () => {
           }}
         >
           <Routes>
-            <Route path="/" element={<UserList />}></Route>
+            <Route path="/" element={<Dashboard />}></Route>
             {/* <Route path="/products" element={<Products />}></Route>
             <Route path="/services" element={<Services />}></Route>
             <Route path="/new-service" element={<AddNewService />}></Route>
             <Route path="/update-service" element={<UpdateService />}></Route> */}
             <Route path="/user-list" element={<UserList />}></Route>
-            <Route path="//subscription" element={<SubScription />}></Route>
+            <Route path="/subscription" element={<SubScription />}></Route>
+            <Route path="/userProject" element={<UserProjects />}></Route>
             {/* <Route
               path="/products-order-list"
               element={<ProductOrder />}
